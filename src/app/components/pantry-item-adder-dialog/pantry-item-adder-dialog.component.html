@@ -1,0 +1,41 @@
+<div class="content-wrapper">
+    <div class="exit-button" (click)="onNoClick()">
+        <mat-icon>close</mat-icon>
+    </div>
+    <form [formGroup]="pantryItemForm" (ngSubmit)="onSubmit()">  
+        <h2>New Pantry Item</h2> 
+        <mat-form-field appearance="fill">
+            <mat-label>Item Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Item Section</mat-label>
+            <mat-select formControlName="section">
+                <mat-option *ngFor="let section of pantrySections" [value]="pantrySections[0]">
+                  {{section}}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="amount">
+            <mat-label>Amount</mat-label>
+            <input type="number" matInput formControlName="amount">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="units">
+            <mat-label>Units</mat-label>
+            <mat-select formControlName="units">
+                <mat-option *ngFor="let unit of measuringUnits" [value]="unit">
+                  {{unit}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Expiration Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="expirationDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button class="submit-button" type="submit"  [disabled]="">Add</button>
+    </form>
+</div>

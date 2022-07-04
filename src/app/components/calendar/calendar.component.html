@@ -1,0 +1,31 @@
+<div class="body">
+    <app-heading [heading]="'Calendar'"></app-heading>
+    <div class="content-wrapper">
+        <div class="calendar-wrapper">
+            <div class="calendar"> 
+                <div class="calendar-header">
+                    <mat-icon class="left-arrow" (click)="switchCurrentDate(false)" >arrow_back_ios</mat-icon>
+                    <p>{{currentDate.toLocaleString('default', { month: 'long' })}}</p>
+                    <mat-icon class="right-arrow" (click)="switchCurrentDate(true)">arrow_back_ios</mat-icon>
+                </div>
+                
+                <div class="calendar-body">
+                    <div *ngFor='let day of days;let i = index' class="day" (click)="clickedOnDay(i)">           
+                        {{day.day}}
+                        <span *ngIf="day.items.length > 0" >p</span>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="day-info-wrapper">
+            <div class="item-wrapper" *ngFor="let item of itemsInFocus">
+                <app-pantry-item [pantryItem]="item"></app-pantry-item>
+            </div>
+        </div>
+    </div>
+    <app-navbar></app-navbar>
+</div>
+
+

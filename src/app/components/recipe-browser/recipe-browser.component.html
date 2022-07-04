@@ -1,0 +1,42 @@
+<div class="body">
+    <app-heading [heading]="'Recipes'"></app-heading>
+    <div class="content-wrapper">
+        <div class="searcharea">
+            <mat-form-field class="searchbar-wrapper">
+                <mat-label>Search</mat-label>
+                <input class="searchbar" type="text" matInput>
+            </mat-form-field>
+            <button (click)="getRecipeItems($event)" [disabled]=" browserStatus === 'searching'" [ngClass]="browserStatus === 'none' || browserStatus === 'error' ? 'refresh enabled' :  'refresh disabled'">
+                <mat-icon class="icon">refresh</mat-icon>
+            </button>
+
+        </div>
+
+        <div *ngIf="browserStatus === 'none'" class="recipe-list">
+            <div class="recipe-list-header">
+                <p>{{recipeItems.length}} results</p>
+            </div>
+            <div class="recipe-list-body">
+                <div class="recipe-item-wrapper" *ngFor="let recipeItem of recipeItems">
+                    <app-recipe-item [recipeItem]="recipeItem" ></app-recipe-item>
+                </div>
+            </div>
+
+        </div>
+        <div *ngIf="browserStatus === 'searching'" class="searching-prompt">
+            <p><b>Searching</b></p>
+            <div class="spinner-border m-5" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+        <div *ngIf="browserStatus === 'error'" class="error-prompt">
+            <div class="prompt-container">
+                <p><b>Error:</b></p>
+                <p>Reached daily recipe requests limit</p>
+                <mat-icon>error_outline</mat-icon>
+            </div>
+
+        </div>
+    </div>
+    <app-navbar></app-navbar>
+</div>

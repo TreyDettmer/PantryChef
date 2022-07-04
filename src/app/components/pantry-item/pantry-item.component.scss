@@ -1,0 +1,34 @@
+@import "../../utilities/variables";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.content-wrapper {
+    background-color: $secondary-background-color;
+    margin: 3px 1px;
+    padding: 8px 10px;
+    border-radius: 2px;
+    display: grid;
+    grid-template-columns: 50% 30% auto;
+
+    .name {
+        
+    }
+    
+    .date {
+        font-size: $font-size-1;
+    }
+    
+    .amount {
+        
+    }
+    
+    p {
+        text-align: center;
+        color: $main-text-color;
+        font-size: $font-size-2;
+    }
+}
+

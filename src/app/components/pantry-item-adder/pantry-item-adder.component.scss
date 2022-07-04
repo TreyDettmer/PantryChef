@@ -1,0 +1,25 @@
+@import "../../utilities/variables";
+
+.opener-button {
+    width: 70px;
+    height: 100%;
+    border-radius: 50%;
+    background-color: $tertiary-color;
+    color: white;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transform: 1s;
+    p {
+        margin: 0;
+        padding: 0;
+        font-size: $font-size-4;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}

@@ -1,0 +1,33 @@
+@import "../../utilities/variables";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.content-wrapper {
+    border-bottom: 1px solid rgb(255, 255, 255);
+    height: 100%;
+    width: 100%;
+    padding: 0 5px;
+
+    .upper {
+        display: grid;
+        grid-template-columns: 25% 50% 25%;
+
+        .logo {
+            text-align: left;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: $font-size-3;
+            color: $main-text-color;
+        }
+
+        .account {
+            text-align: right;
+        }
+    }
+
+}
