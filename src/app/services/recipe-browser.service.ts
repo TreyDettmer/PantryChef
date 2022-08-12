@@ -16,21 +16,53 @@ export interface RecipeRequestConfig {
 export class RecipeBrowserService {
 
   constructor(private http: HttpClient, private pantryService : PantryService) {
-    this.getPantryItems()
+    this.getPantryItems();
   }
 
   pantryItems : PantryItem[] = [];
   pantryItemsString : string = "";
+  shouldMock : boolean = false;
+  isLoadingRecipeInfo : boolean = false;
   getRecipeItems()
   {
-
-    return this.mockGetRecipeItems();
+    this.getPantryItems();
     let apiKey = "972e5287782548ef9cdfc9235af702f4";
-    let URL = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=$${this.pantryItemsString}&number=4`
-    let temp = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2"
-    let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=pasta&maxFat=25&number=2`
+    let URL = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=$${this.pantryItemsString}&number=15`
     return this.http.get(URL,{observe: 'response'}).pipe(
-      timeout(2000),
+      timeout(4000),
+      catchError(e => {
+        console.log("TOOK TOO LONG")
+        // do something on a timeout
+        return of(void 0);
+      })
+    );
+  }
+
+  getSingleRecipeIngredients(recipeId : string | number)
+  {
+
+    this.isLoadingRecipeInfo = true;
+    let apiKey = "972e5287782548ef9cdfc9235af702f4";
+    let URL = `https://api.spoonacular.com/recipes/${recipeId.toString()}/information?apiKey=${apiKey}`;
+    return this.http.get(URL,{observe: 'response'}).pipe(
+      timeout(4000),
+      catchError(e => {
+        console.log("TOOK TOO LONG")
+        // do something on a timeout
+        return of(void 0);
+      })
+    );
+  }
+
+  getMultipleRecipeIngredients(recipeIds : string[])
+  {
+    let recipeIdString = recipeIds.join(",");
+    console.log(recipeIdString);
+
+    let apiKey = "972e5287782548ef9cdfc9235af702f4";
+    let URL = `https://api.spoonacular.com/recipes/informationBulk?apiKey=${apiKey}&ids=$${recipeIdString}`;
+    return this.http.get(URL,{observe: 'response'}).pipe(
+      timeout(4000),
       catchError(e => {
         console.log("TOOK TOO LONG")
         // do something on a timeout

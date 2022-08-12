@@ -1,16 +1,13 @@
 <div class="body">
     <app-heading [heading]="'Recipes'"></app-heading>
     <div class="content-wrapper">
-        <div class="searcharea">
-            <mat-form-field class="searchbar-wrapper">
-                <mat-label>Search</mat-label>
-                <input class="searchbar" type="text" matInput>
-            </mat-form-field>
-            <button (click)="getRecipeItems($event)" [disabled]=" browserStatus === 'searching'" [ngClass]="browserStatus === 'none' || browserStatus === 'error' ? 'refresh enabled' :  'refresh disabled'">
-                <mat-icon class="icon">refresh</mat-icon>
+        <div class="load-button-wrapper">
+            <button (click)="getRecipeItems($event)" [disabled]=" browserStatus === 'searching'" [ngClass]="browserStatus === 'none' || browserStatus === 'error' ? 'load-button enabled' :  'load-button disabled'">
+                Load Recipes
             </button>
-
         </div>
+
+
 
         <div *ngIf="browserStatus === 'none'" class="recipe-list">
             <div class="recipe-list-header">

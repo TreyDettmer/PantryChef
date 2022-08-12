@@ -6,5 +6,6 @@ export enum PantrySections{
     Meat = "Meat",
     Bread = "Bread",
     Condiments = "Condiments",
+    Alcohol = "Alcohol",
     Other = "Other"
 };

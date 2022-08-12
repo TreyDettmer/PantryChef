@@ -13,7 +13,6 @@ import { MeasuringUnits } from 'src/app/interfaces/measuring-units';
 })
 export class PantryItemAdderDialogComponent implements OnInit {
 
-
   ngOnInit(): void {
   }
 
@@ -21,12 +20,12 @@ export class PantryItemAdderDialogComponent implements OnInit {
     name: ['',[Validators.required]],
     section: ['',[Validators.required]],
     expirationDate: ['',[Validators.required]],
-    amount: ['',[]],
-    units: ['',[]],
+    amount: ['',[Validators.required]],
+    units: ['',[Validators.required]],
   });
 
   pantrySections : any = Object.keys(PantrySections);
-  measuringUnits : any = Object.keys(MeasuringUnits).filter(item => isNaN(Number(item)));
+  measuringUnits : any = MeasuringUnits;
 
   constructor(
     public dialogRef: MatDialogRef<PantryItemAdderDialogComponent>,
@@ -42,11 +41,6 @@ export class PantryItemAdderDialogComponent implements OnInit {
   {
     if (this.pantryItemForm.valid)
     {
-      if (!(!!this.pantryItemForm.value.amount == !!this.pantryItemForm.value.units))
-      {
-        alert("Must have both or no amount/unit")
-        return;
-      }
       console.warn('Your order has been submitted', this.pantryItemForm.value);
       this.dialogRef.close(this.pantryItemForm.value);
     }

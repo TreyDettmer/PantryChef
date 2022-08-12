@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <p class="name">{{pantryItem.name}}</p>
-    <p *ngIf="pantryItem.expirationDate != null" class="date">{{daysRemaining}} days</p>
-    <p *ngIf="pantryItem.amount != null" class="amount"> {{pantryItem.amount}} {{unit}}</p>
+    <p *ngIf="pantryItem.expirationDate != null" [ngClass]="daysRemaining > 3 ? 'date' : 'date red'">{{daysRemaining}} days</p>
+    <p *ngIf="pantryItem.amount != null" class="amount"> {{pantryItem.amount}} {{unit.name}}</p>
 </div>
 
 

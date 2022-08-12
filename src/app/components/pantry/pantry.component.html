@@ -11,14 +11,14 @@
             <li class="section">
                 <p class="section-title">{{section.key}}</p>
                 <div cdkDropList  class="section-list"  (cdkDropListDropped)="drop($event,section)">
-                    <div class="item-wrapper" *ngFor="let item of section.value" cdkDrag cdkDragBoundary=".section-list" cdkDragLockAxis="y">
+                    <div class="item-wrapper" *ngFor="let item of section.value" (click)="editPantryItem(item)" cdkDrag cdkDragBoundary=".section-list" cdkDragLockAxis="y">
                         <app-pantry-item [pantryItem]="item"></app-pantry-item>
                     </div>
                 </div>
             </li>       
         </ul>    
     </div>
-    <app-pantry-item-adder [addPantryItem]="addPantryItem.bind(this)" ></app-pantry-item-adder>
+    <app-pantry-item-adder matTooltip="Info about the action" [addPantryItem]="addPantryItem.bind(this)" ></app-pantry-item-adder>
     <app-navbar></app-navbar>
 </div>
 

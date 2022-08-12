@@ -10,8 +10,8 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Item Section</mat-label>
-            <mat-select formControlName="section">
-                <mat-option *ngFor="let section of pantrySections" [value]="pantrySections[0]">
+            <mat-select formControlName="section" [value]="data.section" [placeholder]="data.section">
+                <mat-option *ngFor="let section of pantrySections" [value]="section" >
                   {{section}}
                 </mat-option>
               </mat-select>
@@ -22,9 +22,9 @@
         </mat-form-field>
         <mat-form-field appearance="fill" class="units">
             <mat-label>Units</mat-label>
-            <mat-select formControlName="units">
-                <mat-option *ngFor="let unit of measuringUnits" [value]="unit">
-                  {{unit}}
+            <mat-select formControlName="units" >
+                <mat-option *ngFor="let unit of measuringUnits" [value]="unit.aliases[0]">
+                  {{unit.aliases[0]}}
                 </mat-option>
             </mat-select>
         </mat-form-field>

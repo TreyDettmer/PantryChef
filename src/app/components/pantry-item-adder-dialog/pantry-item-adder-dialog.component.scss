@@ -28,11 +28,18 @@
 
         h2 {
             padding: 3px;
-            font-size: $font-size-3;
+            font-size: $font-size-7;
         }
 
         mat-form-field {
             width: min(500px, 100%);
         }
+    }
+
+    .submit-button
+    {
+        background-color: $submit-color;
+        font-family: $font-family;
+        color: white;
     }
 }

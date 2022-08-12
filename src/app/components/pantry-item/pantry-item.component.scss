@@ -18,7 +18,11 @@
     }
     
     .date {
-        font-size: $font-size-1;
+        font-size: $font-size-2;
+    }
+
+    .red {
+        color: $error-color;
     }
     
     .amount {

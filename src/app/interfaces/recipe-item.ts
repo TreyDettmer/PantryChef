@@ -2,7 +2,8 @@ import { PantryItem } from "./pantry-item";
 
 export interface RecipeItem {
     name: string;
-    ingredients? : PantryItem[];
-    description? : string;
+    ownedIngredients? : PantryItem[];
+    missingIngredients? : string[];
+    id: string;
     image? : string;
 }

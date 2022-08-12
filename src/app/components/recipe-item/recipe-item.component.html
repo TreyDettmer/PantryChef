@@ -1,12 +1,21 @@
-<div class="content-wrapper">
+<div class="content-wrapper" >
     
 
-    <img src="{{recipeItem?.image}}" alt="Plate" class="image">
+    <img src="{{recipeItem?.image}}" alt="Plate" class="image" (click)="openRecipeInfoDialog()">
     <div class="info">
-        <p class="name">{{recipeItem.name}}</p>
-        <p class="description"><b>Description: </b>{{recipeItem?.description}}</p>
+        <p class="name" (click)="openRecipeInfoDialog()">{{recipeItem.name}}</p>
+        <div class="line"></div>
         <div class="ingredients">
-            <p><b>Ingredients: </b>{{ingredientsList}}</p>
+            <p><b>Owned Ingredients: </b>
+                <p class="owned-ingredient" *ngFor="let ownedIngredient of recipeItem.ownedIngredients" (click)="openIngredientInfoDialog(ownedIngredient)">
+                    {{ownedIngredient.name.toLowerCase()}}, 
+                </p>
+                
+            <p><b>Missing Ingredients: </b>
+                <p class="missing-ingredient" *ngFor="let missingIngredient of recipeItem.missingIngredients">
+                    {{missingIngredient}}, 
+                </p>
+
         </div>
     </div>
     

@@ -10,9 +10,9 @@
                 </div>
                 
                 <div class="calendar-body">
-                    <div *ngFor='let day of days;let i = index' class="day" (click)="clickedOnDay(i)">           
-                        {{day.day}}
-                        <span *ngIf="day.items.length > 0" >p</span>
+                    <div *ngFor='let day of days;let i = index' [ngClass]="day.items.length > 0 ? 'day clickable' : 'day'" (click)="clickedOnDay(i)">   
+                        <span>{{day.day}}</span>        
+                        <mat-icon class="day-marker" *ngIf="day.items.length > 0">info</mat-icon>
                     </div>
                 </div>
 
@@ -21,7 +21,7 @@
         </div>
         <div class="day-info-wrapper">
             <div class="item-wrapper" *ngFor="let item of itemsInFocus">
-                <app-pantry-item [pantryItem]="item"></app-pantry-item>
+                <app-pantry-item [pantryItem]="item" (click)="openItemInfoDialog(item)"></app-pantry-item>
             </div>
         </div>
     </div>

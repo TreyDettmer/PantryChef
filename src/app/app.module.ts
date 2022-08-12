@@ -23,6 +23,9 @@ import { HeadingComponent } from './components/heading/heading.component'
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeBrowserComponent } from './components/recipe-browser/recipe-browser.component';
 import { RecipeItemComponent } from './components/recipe-item/recipe-item.component';
+import { PantryItemEditDialogComponent } from './components/pantry-item-edit-dialog/pantry-item-edit-dialog.component';
+import { PantryItemInfoDialogComponent } from './components/pantry-item-info-dialog/pantry-item-info-dialog.component';
+import { RecipeItemInfoDialogComponent } from './components/recipe-item-info-dialog/recipe-item-info-dialog.component';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { RecipeItemComponent } from './components/recipe-item/recipe-item.compon
     PantryItemAdderDialogComponent,
     HeadingComponent,
     RecipeBrowserComponent,
-    RecipeItemComponent
+    RecipeItemComponent,
+    PantryItemEditDialogComponent,
+    PantryItemInfoDialogComponent,
+    RecipeItemInfoDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,29 @@
+
+<div class="content-wrapper">
+    <div class="exit-button" >
+        <mat-icon (click)="onClose()">close</mat-icon>
+    </div>
+    <h2 class="name">{{recipeItem.name}}</h2>
+
+    <div *ngIf="loadStatus === 'loaded'" class="recipe-list">
+        <h3 class="recipe-link"> <a target="_blank" href="{{recipeData.sourceUrl}}">Link to Recipe</a></h3>
+        <ul class="missing-ingredients-list">
+            <li *ngFor="let missingIngredient of missingIngredients" class="missing-ingredient">
+                <p class="ingredient" ><b>Ingredient:</b> {{missingIngredient.ingredient}} <b>Needed:</b> {{missingIngredient.neededAmount}} <b>Owned:</b> {{missingIngredient.ownedAmount}}</p>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="loadStatus === 'loading'" class="loading-prompt">
+        <p><b>Loading Missing Ingredient Info</b></p>
+        <div class="spinner-border m-5" role="status">
+            <span class="sr-only"></span>
+        </div>
+    </div>
+    <div *ngIf="loadStatus === 'error'" class="error-prompt">
+        <div class="prompt-container">
+            <p><b>Error:</b></p>
+            <p>Reached daily recipe requests limit</p>
+            <mat-icon>error_outline</mat-icon>
+        </div>
+    </div>
+</div>

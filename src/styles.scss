@@ -54,6 +54,10 @@ button:disabled
     color: #aaa;
     cursor: auto;
 }
+
+mat-dialog-container {
+    background-color: $main-text-color !important;
+}
   
 /* everywhere else */
 * 

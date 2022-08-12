@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { PantryItemAdderDialogComponent } from '../pantry-item-adder-dialog/pantry-item-adder-dialog.component';
 import { PantryService } from 'src/app/services/pantry.service';
 import { PantryItem } from 'src/app/interfaces/pantry-item';
+import { GetUnit, MeasuringUnits } from 'src/app/interfaces/measuring-units';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class PantryItemAdderComponent implements OnInit {
           section: result.section,
           expirationDate: new Date(result.expirationDate),
           amount: result.amount,
-          unit: result.units
+          unit: GetUnit(result.units)
         }
         this.addPantryItem(pantryItem);
       }

@@ -4,6 +4,8 @@ import { Day } from 'src/app/interfaces/day';
 import { PantryItem } from 'src/app/interfaces/pantry-item';
 import { PantryService } from 'src/app/services/pantry.service';
 import * as _ from "lodash";
+import { PantryItemInfoDialogComponent } from '../pantry-item-info-dialog/pantry-item-info-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class CalendarComponent implements OnInit {
 
   
 
-  constructor(private pantryService : PantryService) { }
+  constructor(public dialog: MatDialog, private pantryService : PantryService) { }
 
   days : Day[] = [];
   date : string = "";
@@ -30,7 +32,6 @@ export class CalendarComponent implements OnInit {
   ngOnInit(): void {
 
     this.pantryService.getPantryItems().subscribe(pantryItems => {
-      console.log(pantryItems);
       this.pantryItems = _groupBy(pantryItems, pantryItem => pantryItem.section);
       this.initializeCalendar();
     });
@@ -164,8 +165,15 @@ export class CalendarComponent implements OnInit {
         
       }
     }
+  }
 
-    
+  openItemInfoDialog(item : PantryItem)
+  {
+    this.dialog.open(PantryItemInfoDialogComponent, {
+      width: '90%',
+      data: item,
+      panelClass: 'my-custom-dialog-class',
+    });
   }
 
 }
