@@ -487,7 +487,6 @@ export class RecipeBrowserComponent implements OnInit {
           return;
         }
         ($event.target as HTMLButtonElement).disabled = false;
-        console.log(response);
         let ids : string[] = [];
         for (let recipe of response.body as Array<any>)
         {
