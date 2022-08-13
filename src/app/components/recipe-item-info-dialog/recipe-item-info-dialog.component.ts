@@ -17,6 +17,7 @@ export class RecipeItemInfoDialogComponent implements OnInit {
   loadStatus : string = "loading";
   recipeData : any;
   missingIngredients : {ingredient: string, neededAmount: string, ownedAmount: string}[] = [];
+  questionableIngredients : {ingredient: string, neededAmount: string, ownedAmount: string}[] = [];
   debugging : boolean = false;
   constructor(
     public dialogRef: MatDialogRef<RecipeItemInfoDialogComponent>,
@@ -398,7 +399,6 @@ export class RecipeItemInfoDialogComponent implements OnInit {
   {
     console.log(this.recipeData);
     let compatibleIngredients = [];
-    let questionableIngredients = [];
     for (let extendedIngredient of this.recipeData.extendedIngredients)
     {
       // check if we have this ingredient
@@ -415,7 +415,7 @@ export class RecipeItemInfoDialogComponent implements OnInit {
       let convertedUnits = this.unitConversionService.convertUnits(amount,GetUnit(unit),ownedIngredient.unit);
       if (convertedUnits == -1)
       {
-        questionableIngredients.push({ingredient: `${ownedIngredient.name}`, neededAmount: `${amount}`, ownedAmount: `${ownedIngredient.amount}`})
+        this.questionableIngredients.push({ingredient: `${ownedIngredient.name}`, neededAmount: `${amount} units` , ownedAmount: `${ownedIngredient.amount} ${ownedIngredient.unit.name}`})
         continue;
       }
       console.log(`Ingredient: ${ownedIngredient.name}, ConvertedAmount: ${convertedUnits}, OwnedAmount: ${ownedIngredient.amount} ${ownedIngredient.unit.name}`);
@@ -428,7 +428,7 @@ export class RecipeItemInfoDialogComponent implements OnInit {
         this.missingIngredients.push({ingredient: `${ownedIngredient.name}`, neededAmount: `${amount} ${ownedIngredient.unit.name}`, ownedAmount: `${ownedIngredient.amount} ${ownedIngredient.unit.name}`})
       }
     }
-    console.log("Questionable: " +  questionableIngredients.toString());
+    console.log("Questionable: " +  this.questionableIngredients.toString());
     console.log("Compatible: " +  compatibleIngredients.toString());
     
     this.loadStatus = "loaded";

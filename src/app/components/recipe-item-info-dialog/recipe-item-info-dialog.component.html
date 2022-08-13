@@ -11,6 +11,12 @@
             <li *ngFor="let missingIngredient of missingIngredients" class="missing-ingredient">
                 <p class="ingredient" ><b>Ingredient:</b> {{missingIngredient.ingredient}} <b>Needed:</b> {{missingIngredient.neededAmount}} <b>Owned:</b> {{missingIngredient.ownedAmount}}</p>
             </li>
+            <ng-template [ngIf]="questionableIngredients.length > 0">
+                <li *ngFor="let questionableIngredient of questionableIngredients" class="missing-ingredient">
+                    <p class="ingredient" ><b>Ingredient:</b> {{questionableIngredient.ingredient}} <b>Needed:</b> {{questionableIngredient.neededAmount}} <b>Owned:</b> {{questionableIngredient.ownedAmount}}</p>
+                </li>
+                <p class="disclaimer">(Ingredients with non-convertable units like "pinch" or "dash" get converted to "units")</p>
+            </ng-template>
         </ul>
     </div>
     <div *ngIf="loadStatus === 'loading'" class="loading-prompt">

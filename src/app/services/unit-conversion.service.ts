@@ -12,7 +12,6 @@ export class UnitConversionService {
   {
     if ((from.name == "units" && to.name != "units") || (from.name != "units" && to.name == "units"))
     {
-      alert("The Units of this object cannot be converted.")
       return -1;
     }
     if (from.name == to.name)

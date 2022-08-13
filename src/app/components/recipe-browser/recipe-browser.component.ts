@@ -505,7 +505,6 @@ export class RecipeBrowserComponent implements OnInit {
             }
           }
           ids.push(`${recipe.id}`)
-          console.log(recipe);
           this.recipeItems.push({
             name: recipe.title,
             ownedIngredients: ownedIngredients,
